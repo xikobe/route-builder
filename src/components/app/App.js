@@ -1,7 +1,10 @@
 import React from 'react';
+import Gmap from '../../map';
 
 const App = () => (
-    <p>Foo</p>
+    <>
+        <Gmap />
+    </>
 )
 
 export default App;
