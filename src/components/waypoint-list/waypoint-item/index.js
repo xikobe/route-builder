@@ -1,9 +1,14 @@
 import React from 'react';
+import { ListItem } from './styles';
 
 const WaypointItem = ({ waypoint }) => {
     console.log(waypoint);
-    
-    return <p>Bar</p>
+
+    return (
+        <ListItem>
+            foo
+        </ListItem>
+    )
 }
 
 export default WaypointItem;
