@@ -8,6 +8,6 @@ const MapWrapper = styled.div`
 
 export default function GMap() {
   return (
-          <MapWrapper id="map" />
+      <MapWrapper id="map" />
   );
 }

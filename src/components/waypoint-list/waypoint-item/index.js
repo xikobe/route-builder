@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ListItem } from './styles';
 
 const WaypointItem = ({ waypoint }) => {
@@ -11,4 +11,4 @@ const WaypointItem = ({ waypoint }) => {
     )
 }
 
-export default WaypointItem;
+export default memo(WaypointItem);
