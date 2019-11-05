@@ -1,5 +1,12 @@
 import uniqid from 'uniqid';
 
+export const createMap = () => {
+    return new window.google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: { lat: 37.77493, lng: -122.41942 }
+    });
+}
+
 export const createLine = (coords) => {
     return new window.google.maps.Polyline({
         path: coords,
@@ -26,13 +33,6 @@ export const drawMarkers = (map, waypoints) => {
     waypoints.forEach((waypoint) => {
         waypoint.setMap(map);
     })
-}
-
-export const createMap = () => {
-    return new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
-      center: { lat: 37.77493, lng: -122.41942 }
-    });
 }
 
 export const clearWaypoint = (waypointToRemove) => {

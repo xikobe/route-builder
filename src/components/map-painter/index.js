@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
-import { GMapContext } from '../../shared/contexts/GMapContext'
+import { useEffect, useState } from 'react';
 import { drawMarkers, drawLine, createLine } from '../../shared/utils/mapUtils';
 import usePrev from '../../shared/hooks/usePrev';
+import { useGMapContext } from '../../shared/contexts/GMapContext';
 
 const MapPainter = ({ children }) => {
-    const { map, markers } = useContext(GMapContext);
+    const { map, markers } = useGMapContext();
     const [line, setLine] = useState(null);
     const prevLine = usePrev(line);
 

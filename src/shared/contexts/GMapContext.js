@@ -1,8 +1,10 @@
-import React, { useEffect, createContext, useState } from 'react';
+import React, { useEffect, createContext, useState, useContext } from 'react';
 import useMap from '../hooks/useMap';
 import { clearWaypoint, createMarker } from '../utils/mapUtils';
 
 const GMapContext = createContext();
+
+export const useGMapContext = () => useContext(GMapContext);
 
 const GMapProvider = ({ children }) => {
     const {map} = useMap();

@@ -1,15 +1,20 @@
 import React, { memo } from 'react';
 import { ListItem } from './styles';
+import { IconButton } from "@chakra-ui/core";
 
-const WaypointItem = ({ waypoint, removeWaypoint }) => {
-    function handleOnDeleteClick() {
+export const WaypointItem = ({ waypoint, removeWaypoint, title }) => {
+    const handleOnDeleteClick = () => {
         removeWaypoint(waypoint);
     }
 
     return (
         <ListItem>
-            foo
-            <button onClick={ handleOnDeleteClick }>remove</button>
+            <p data-test-id="waypoint-title">{ title }</p>
+            <IconButton
+                data-test-id="waypoint-remove-btn"
+                variantColor="teal"
+                onClick={ handleOnDeleteClick }
+                icon="delete" />
         </ListItem>
     )
 }
