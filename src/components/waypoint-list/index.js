@@ -1,18 +1,18 @@
 import React, { useContext } from 'react';
-import { GmapContext } from '../../shared/contexts/GMapContext';
+import { GMapContext } from '../../shared/contexts/GMapContext';
 import WaypointItem from './waypoint-item';
 import SaveButton from './save-button';
 import { ListWrapper, List } from './styles';
 
 const WaypointList = () => {
-    const { waypoints, removeWaypoint } = useContext(GmapContext);
+    const { markers, removeWaypoint } = useContext(GMapContext);
 
     return (
         <ListWrapper>
             <List>
                 {
-                    waypoints.map(waypoint =>
-                        <WaypointItem removeWaypoint={removeWaypoint} waypoint={ waypoint } />) 
+                    markers.map(marker =>
+                        <WaypointItem removeWaypoint={removeWaypoint} waypoint={ marker } />)
                 }
             </List>
             <SaveButton />

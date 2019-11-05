@@ -17,7 +17,8 @@ export const createMarker = (position) => (
     })
 )
 
-export const drawLine = (map, line) => {
+export const drawLine = (map, [lineToRemove, line]) => {
+    lineToRemove && clearLine(lineToRemove);
     line.setMap(map);
 }
 
@@ -25,12 +26,6 @@ export const drawMarkers = (map, waypoints) => {
     waypoints.forEach((waypoint) => {
         waypoint.setMap(map);
     })
-}
-
-export const drawMap = (map, waypoints, [lineToRemove, lineToDraw]) => {
-    lineToRemove && clearLine(lineToRemove);
-    drawLine(map, lineToDraw);
-    drawMarkers(map, waypoints);
 }
 
 export const createMap = () => {
