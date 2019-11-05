@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { Button } from "@chakra-ui/core";
-import { MarkersContext } from '../../../shared/contexts/MarkersContext';
+import { GmapContext } from '../../../shared/contexts/GMapContext';
 import { parseMarkers } from '../../../shared/utils/createGPX';
 import api from '../../../shared/api';
 
 const SaveButton = () => {
-    const { markers } = useContext(MarkersContext);
+    const { waypoints } = useContext(GmapContext);
 
     const saveGPX = () => {
-        const parsedMarkers = parseMarkers(markers);
+        const parsedMarkers = parseMarkers(waypoints);
 
         api.download(parsedMarkers);
     }

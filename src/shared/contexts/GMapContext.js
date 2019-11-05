@@ -1,28 +1,23 @@
-import React, { useEffect, createContext, useState } from 'react';
+import React, { useEffect, createContext } from 'react';
 import useScript from '../hooks/useScript';
+import useMap from '../hooks/useMap';
+import { drawLine } from '../utils/mapUtils';
 
 const GmapContext = createContext();
 
 const GmapProvider = ({ children }) => {
-    const [map, setMap] = useState(null);
-
     const [loaded] = useScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}`
     );
 
-    useEffect(() => {
-      if (loaded) {
-        const gmap = new window.google.maps.Map(document.getElementById("map"), {
-          zoom: 12,
-          center: { lat: 37.77493, lng: -122.41942 }
-        });
+    const [waypoints, map] = useMap(loaded);
 
-        setMap(gmap);
-      }
-    }, [loaded]);
+    useEffect(() => {
+        map && drawLine(map, waypoints);
+    }, [map, waypoints]);
 
     return (
-        <GmapContext.Provider value={ { mapLoaded: loaded, map } }>
+        <GmapContext.Provider value={ { waypoints } }>
           { children }
         </GmapContext.Provider>
     );

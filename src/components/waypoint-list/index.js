@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import { MarkersContext } from '../../shared/contexts/MarkersContext';
+import { GmapContext } from '../../shared/contexts/GMapContext';
 import WaypointItem from './waypoint-item';
 import SaveButton from './save-button';
 import { ListWrapper, List } from './styles';
 
 const WaypointList = () => {
-    const { markers } = useContext(MarkersContext);
+    const { waypoints } = useContext(GmapContext);
 
     return (
         <ListWrapper>
             <List>
-                { markers.map(marker => <WaypointItem waypoint={ marker } />) }
+                { waypoints.map(waypoint => <WaypointItem waypoint={ waypoint } />) }
             </List>
             <SaveButton />
         </ListWrapper>
