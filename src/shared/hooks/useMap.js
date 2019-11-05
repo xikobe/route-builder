@@ -1,29 +1,22 @@
 import { useState, useEffect } from 'react';
+import { createMap } from '../utils/mapUtils';
+import useScript from '../hooks/useScript';
 
 const useMap = (isloaded) => {
     const [map, setMap] = useState(null);
-    const [waypoints, setWaypoints] = useState([]);
+    const [loaded] = useScript(
+      `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_MAP_KEY}`
+    );
 
     useEffect(() => {
-        if(!map && isloaded) {
-            const gmap = new window.google.maps.Map(document.getElementById("map"), {
-              zoom: 12,
-              center: { lat: 37.77493, lng: -122.41942 }
-            });
-
-            gmap.addListener('click', ({ latLng }) => {
-                setWaypoints((waypoints) => [...waypoints, latLng]);
-            })
+        if(!map && loaded) {
+            const gmap = createMap();
 
             setMap(gmap);
         }
-    }, [map, isloaded]);
+    }, [map, loaded]);
 
-    function removeWaypoint(waypointToRemove) {
-        setWaypoints((waypoints) => waypoints.filter(waypoint => waypoint !== waypointToRemove));
-    };
-
-    return { waypoints, map, removeWaypoint };
+    return { map };
 }
 
 export default useMap;
