@@ -19,7 +19,11 @@ const useMap = (isloaded) => {
         }
     }, [map, isloaded]);
 
-    return [waypoints, map];
+    function removeWaypoint(waypointToRemove) {
+        setWaypoints((waypoints) => waypoints.filter(waypoint => waypoint !== waypointToRemove));
+    };
+
+    return { waypoints, map, removeWaypoint };
 }
 
 export default useMap;

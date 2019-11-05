@@ -5,12 +5,15 @@ import SaveButton from './save-button';
 import { ListWrapper, List } from './styles';
 
 const WaypointList = () => {
-    const { waypoints } = useContext(GmapContext);
+    const { waypoints, removeWaypoint } = useContext(GmapContext);
 
     return (
         <ListWrapper>
             <List>
-                { waypoints.map(waypoint => <WaypointItem waypoint={ waypoint } />) }
+                {
+                    waypoints.map(waypoint =>
+                        <WaypointItem removeWaypoint={removeWaypoint} waypoint={ waypoint } />) 
+                }
             </List>
             <SaveButton />
         </ListWrapper>
