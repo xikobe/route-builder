@@ -30,7 +30,8 @@ export const drawLine = (map, [lineToRemove, line]) => {
 }
 
 export const drawMarkers = (map, waypoints) => {
-    waypoints.forEach((waypoint) => {
+    waypoints.forEach((waypoint, index) => {
+        waypoint.setLabel(`${index + 1}`)
         waypoint.setMap(map);
     })
 }
