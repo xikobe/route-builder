@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { useGMapContext } from '../../shared/contexts/GMapContext';
-import WaypointList from './index';
-import WaypointItem from './waypoint-item';
+import WaypointList, { SortableList } from './index';
 
 jest.mock('../../shared/contexts/GMapContext', () => ({
     ...require.requireActual('../../shared/contexts/GMapContext'),
@@ -10,18 +9,13 @@ jest.mock('../../shared/contexts/GMapContext', () => ({
 }))
 
 describe('WaypointList', () => {
-    it('should not render WaypointItem if markers is empty', () => {
-        useGMapContext.mockReturnValue({markers: []});
+    it('should render list with correct markers', () => {
+        const mockMarkers = ['foo'];
+        useGMapContext.mockReturnValue({markers: mockMarkers});
         const wrapper = shallow(<WaypointList />);
 
-        expect(wrapper.find(WaypointItem).exists()).toBe(false);
-    });
+        const list = wrapper.find(SortableList);
 
-    it('should render WaypointItem with correct prop', () => {
-        useGMapContext.mockReturnValue({markers: ['foo']});
-        const wrapper = shallow(<WaypointList />);
-
-        expect(wrapper.find(WaypointItem).exists()).toBe(true);
-        expect(wrapper.find(WaypointItem).prop('title')).toBe('waypoint 1');
+        expect(list.prop('markers')).toBe(mockMarkers);
     });
 });
