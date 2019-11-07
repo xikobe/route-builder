@@ -6,16 +6,14 @@ import { ListWrapper, List } from './styles';
 import { Heading } from "@chakra-ui/core";
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({indexKey, marker, removeWaypoint}) => {
-    return (
+const SortableItem = SortableElement(({indexKey, marker, removeWaypoint}) => (
         <WaypointItem
             title={ `waypoint ${indexKey + 1}` }
             removeWaypoint={removeWaypoint}
             waypoint={ marker } />
-)});
+));
 
-export const SortableList = SortableContainer(({markers, removeWaypoint}) => {
-  return (
+export const SortableList = SortableContainer(({markers, removeWaypoint}) => (
     <List>
         {markers.map((marker, index) => (
             <SortableItem
@@ -26,8 +24,7 @@ export const SortableList = SortableContainer(({markers, removeWaypoint}) => {
                 removeWaypoint={removeWaypoint}/>
         ))}
     </List>
-  );
-});
+ ));
 
 const WaypointList = () => {
     const { markers, removeWaypoint, reOrderMarkers } = useGMapContext();
