@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+/* downloaded here https://usehooks.com/useScript/ */
+
 let cachedScripts = [];
 export default function useScript(src) {
   // Keeping track of script loaded and error state
