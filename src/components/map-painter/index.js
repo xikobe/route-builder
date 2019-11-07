@@ -9,19 +9,19 @@ const MapPainter = ({ children }) => {
     const prevLine = usePrev(line);
 
     useEffect(() => {
-        if(map) {
+        if (map) {
             drawMarkers(map, markers);
-            setLine((line) => createLine(markers.map(marker => marker.position)));
-        };
+            setLine(line => createLine(markers.map(marker => marker.position)));
+        }
     }, [map, markers]);
 
     useEffect(() => {
-        if(map && line) {
+        if (map && line) {
             drawLine(map, [prevLine, line]);
         }
     }, [line, map, prevLine]);
 
     return children;
-}
+};
 
 export default MapPainter;

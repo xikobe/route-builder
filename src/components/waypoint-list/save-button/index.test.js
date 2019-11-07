@@ -10,11 +10,11 @@ jest.mock('../../../shared/api');
 jest.mock('../../../shared/contexts/GMapContext', () => ({
     ...require.requireActual('../../../shared/contexts/GMapContext'),
     useGMapContext: jest.fn(),
-}))
+}));
 
 describe('SaveButton', () => {
     it('should call download enpoint on click', () => {
-        useGMapContext.mockReturnValue({ markers: [{id: 'foo'}] });
+        useGMapContext.mockReturnValue({ markers: [{ id: 'foo' }] });
         parseMarkers.mockReturnValue('foo');
 
         const wrapper = shallow(<SaveButton />);
@@ -23,5 +23,5 @@ describe('SaveButton', () => {
         btn.simulate('click');
 
         expect(api.download).toHaveBeenCalledWith('foo');
-    })
+    });
 });

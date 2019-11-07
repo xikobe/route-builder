@@ -1,11 +1,10 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import Gmap from '../map';
 import { GMapProvider } from '../../shared/contexts/GMapContext';
 import MapPainter from '../map-painter';
-// import WaypointList from '../waypoint-list';
 import { Wrapper, MapWrapper } from './styles';
 
-const LazyWaypointList =  React.lazy(() => import('../waypoint-list'));
+const LazyWaypointList = React.lazy(() => import('../waypoint-list'));
 
 const App = () => (
     <GMapProvider>
@@ -20,6 +19,6 @@ const App = () => (
             </Wrapper>
         </MapPainter>
     </GMapProvider>
-)
+);
 
 export default App;

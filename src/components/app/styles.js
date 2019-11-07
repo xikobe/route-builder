@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
     flex-direction: row;
     align-content: stretch;
     height: 100vh;
-`
+`;
 
 export const MapWrapper = styled.div`
     flex: 1 1 auto;
-`
+`;

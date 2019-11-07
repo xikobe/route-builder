@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from "@chakra-ui/core";
+import { theme } from '@chakra-ui/core';
 
 export const ListWrapper = styled.div`
     flex: 0 1 auto;
@@ -13,4 +13,6 @@ export const ListWrapper = styled.div`
 export const List = styled.ul`
     list-style: none;
     margin-bottom: 20px;
+    max-height: 100%;
+    overflow-y: scroll;
 `;

@@ -1,38 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Hello francisco_map
 
-In the project directory, you can run:
+This is my interpretation of the route builder challenge. I built it with:
 
-### `yarn start`
+ - [react](https://github.com/facebook/react)
+ - [emotion (css-in-js)](https://emotion.sh/docs/introduction)
+ - [chakra UI](https://chakra-ui.com/) for simple UI design system
+ - [google-maps](https://www.ecosia.org/search?q=google%20maps%20api&addon=chrome&addonversion=2.1.0)
+ - [jest](https://jestjs.io/), [enzyme](https://github.com/airbnb/enzyme) and [react-testing-library](https://testing-library.com/docs/react-testing-library/intro) for unit tests
+ - [gps-to-gpx](https://www.npmjs.com/package/gps-to-gpx) for building gpx file
+ - [react-sortable-hoc](https://www.npmjs.com/package/react-sortable-hoc) for sorting list UI
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The way I approached this project was trying to figure out the little things I wanted to deliver:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ - clicking on the map creates markers
+ - with the markers, draw the line between them
+ - having a decoupled way of creating + drawing markers and line between them
+ - store the markers for them to be used by the list component
+ - how to generate the gpx file (totally unknown to me in the beginning)
 
-### `yarn test`
+After having all this things sorted out, I was able to work on:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- removing markers
+- re-drawing the map
+- ordering the map
 
-### `yarn build`
+The biggest challenges were:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- not using an existent google-map-react component. But in the end I'm happy that I accepted the challenge because I think the code written is very simple.
+- creating server to build gpx file (not complex but had to investigate a bit because I don't have much experience with backend work).
+- handling markers data in a way that was simple enough to access and manipulate them and redraw the map correctly. I opted to try the new context api because it's something that I don't use much on my everyday work (redux for the past 3 years). I ended up with mixed feelings about it but for this specific feature, it works fine.
+- using the context api required a bigger effort related to unit testing
+- the emotion and chakra ui libraries were also new to me and I also don't think I'd go for that again. chakra UI is a bit broken while unit testing.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Take aways:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+It was a good exercise  and I'm happy with the end result and the approach I took. Got the opportunity to try things I don't normally use and that is always good fun. Hope it's enough to show what I can do.
 
-### `yarn eject`
+## Running the project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Pre conditions
+- Extract/pull files from zip/repo.
+- Install dependencies `npm i`
+- Create `.env.local` file with `REACT_APP_MAP_KEY` variable
+- Insert a valid google maps api key
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running local dev
+- on root folder
+- start local app `npm run start`
+- start local express server `node server.js`
+- app will run in `http://localhost:3000/`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Running prod build
+- on root folder
+- `npm run build`
+- start server `node server.js`
+- app will run in `http://localhost:8080/`

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {WaypointItem} from './index';
+import { WaypointItem } from './index';
 
 describe('WaypointItem', () => {
     it('should render correctly', () => {
@@ -13,7 +13,7 @@ describe('WaypointItem', () => {
         const waypoint = 'foo';
         const mockRemoveWaypoint = jest.fn();
         const wrapper = shallow(
-            <WaypointItem title="hello" waypoint={ waypoint } removeWaypoint={mockRemoveWaypoint} />
+            <WaypointItem title="hello" waypoint={waypoint} removeWaypoint={mockRemoveWaypoint} />
         );
 
         const btn = wrapper.find('[data-test-id="waypoint-remove-btn"]');

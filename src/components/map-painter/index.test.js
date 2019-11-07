@@ -1,7 +1,7 @@
 import React from 'react';
 import MapPainter from './index';
 import { drawMarkers, drawLine } from '../../shared/utils/mapUtils';
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 
 const mockMap = 'map';
 const mockMarker = { position: 'bar' };
@@ -10,7 +10,7 @@ const mockGMapContext = { map: mockMap, markers: [mockMarker] };
 
 jest.mock('../../shared/contexts/GMapContext', () => ({
     ...require.requireActual('../../shared/contexts/GMapContext'),
-    useGMapContext: () => (mockGMapContext),
+    useGMapContext: () => mockGMapContext,
 }));
 
 jest.mock('../../shared/utils/mapUtils', () => ({
@@ -22,7 +22,7 @@ jest.mock('../../shared/utils/mapUtils', () => ({
 
 describe('MapPainter', () => {
     it('should call drawMarkers and drawLine with the correct values', () => {
-        render(<MapPainter children="foo" />)
+        render(<MapPainter children="foo" />);
 
         expect(drawMarkers).toHaveBeenCalledWith(mockMap, mockGMapContext.markers);
         expect(drawLine).toHaveBeenCalledWith(mockMap, [null, mockLine]);
