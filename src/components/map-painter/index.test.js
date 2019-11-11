@@ -1,6 +1,6 @@
 import React from 'react';
 import MapPainter from './index';
-import { drawMarkers, drawLine } from '../../shared/utils/mapUtils';
+import { drawMarkers, drawLine } from '../../shared/utils/map';
 import { render } from '@testing-library/react';
 
 const mockMap = 'map';
@@ -13,8 +13,8 @@ jest.mock('../../shared/contexts/GMapContext', () => ({
     useGMapContext: () => mockGMapContext,
 }));
 
-jest.mock('../../shared/utils/mapUtils', () => ({
-    ...require.requireActual('../../shared/utils/mapUtils'),
+jest.mock('../../shared/utils/map', () => ({
+    ...require.requireActual('../../shared/utils/map'),
     drawLine: jest.fn(),
     drawMarkers: jest.fn(),
     createLine: () => mockLine,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { drawMarkers, drawLine, createLine } from '../../shared/utils/mapUtils';
+import { drawMarkers, drawLine, createLine } from '../../shared/utils/map';
 import usePrev from '../../shared/hooks/usePrev';
 import { useGMapContext } from '../../shared/contexts/GMapContext';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createMap } from '../utils/mapUtils';
+import { createMap } from '../utils/map';
 import useScript from '../hooks/useScript';
 
 const useMap = isloaded => {

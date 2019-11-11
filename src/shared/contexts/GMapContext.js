@@ -1,6 +1,6 @@
 import React, { useEffect, createContext, useState, useContext } from 'react';
 import useMap from '../hooks/useMap';
-import { clearWaypoint, createMarker } from '../utils/mapUtils';
+import { clearWaypoint, createMarker } from '../utils/map';
 import arrayMove from 'array-move';
 
 const GMapContext = createContext();

@@ -2,16 +2,13 @@ import React from 'react';
 import { Button } from '@chakra-ui/core';
 import { SaveButtonWrapper } from './styles';
 import { useGMapContext } from '../../../shared/contexts/GMapContext';
-import { parseMarkers } from '../../../shared/utils/parseMarkers';
-import api from '../../../shared/api';
+import { downloadGPXFile } from '../../../shared/utils/markers';
 
 const SaveButton = () => {
     const { markers } = useGMapContext();
 
     const saveGPX = () => {
-        const parsedMarkers = parseMarkers(markers);
-
-        api.download(parsedMarkers);
+        downloadGPXFile(markers);
     };
 
     return (
